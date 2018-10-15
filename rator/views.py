@@ -2,16 +2,34 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, EditProfileForm
-
+from .forms import SignUpForm, EditProfileForm, ProjectForm
+from .models import Project, Profile
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     profile = Profile.get_all()
-    image=Image.all_images()
+    project=Project.all_projects()
+    current_user= request.user
+    context = {"project":project,"current_user":current_user,"profile":profile}
+    return render(request, 'registration/home.html', context )
 
-    commented = CommentForm()
-    context = {"image":image,"current_user":current_user,"profile":profile, 'commented':commented}
-    return render(request, 'registration/home.html', {} )
+
+@login_required(login_url='/login')
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+        return redirect('home')
+
+    else:
+        form = ProjectForm()
+    return render(request, 'registration/image.html', {"form": form})
+
+
 
 def login_user(request):
     if request.method == 'POST':

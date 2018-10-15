@@ -8,7 +8,7 @@ from django.utils import timezone
 
 class Project(models.Model):
     user = models.ForeignKey(User, related_name="poster", on_delete=models.CASCADE)
-    landing_page = ImageField(manual_crop='150x150')
+    landing_page = ImageField(manual_crop='100x100')
     title = models.CharField(max_length=30)
     description = models.TextField()
     link = models.URLField(max_length=250)
@@ -18,7 +18,7 @@ class Project(models.Model):
         return self.title
 
     @classmethod
-    def all_images(cls):
+    def all_projects(cls):
         project = cls.objects.order_by('post_date')
         return project
 
@@ -31,7 +31,7 @@ class Project(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, related_name="poster", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="profiler", on_delete=models.CASCADE)
     picture = ImageField(manual_crop='150x150')
     contact = models.CharField(max_length =300)
     bio = models.TextField()

@@ -1,12 +1,24 @@
 {% extends 'registration/base.html'%}
 {% block content %}
 
-  {% if user.is_authenticated %}
-<p>Name: {{ user.first_name }}  {{user.last_name}}</p>
-<p>Username:  {{ user.username}}</p>
-<!-- <p>Password: {{ user.password}}</p> -->
-<p>Email: {{ user.email}}</p>
-<!-- <p>Fav_color: {{ user.fav_color}}</p> -->
 
-{% endif %}
+ <div class="col-md-6 offset-md-3">
+<div>
+     <a href="{%url 'new_project'%}">Create Post</a>
+   </div>
+
+ {% for pic in project %}
+
+<div>
+<h3>posted by {{pic.user}} on {{pic.post_date}}</h3>
+
+         <img src="{{pic.landing_page.cdn_url}}" class='img-responsive ' style="width:100%" class="content" />
+          <p style='font-size:20px;'>{{pic.link}}</p>
+
+
+
+
+ {% endfor %}
+</div>
+
 {% endblock %}

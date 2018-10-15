@@ -66,5 +66,5 @@ class SignUpForm(UserCreationForm):
 
 class ProjectForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = Project
         fields = '__all__'
