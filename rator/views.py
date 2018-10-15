@@ -6,6 +6,11 @@ from .forms import SignUpForm, EditProfileForm
 
 # Create your views here.
 def home(request):
+    profile = Profile.get_all()
+    image=Image.all_images()
+
+    commented = CommentForm()
+    context = {"image":image,"current_user":current_user,"profile":profile, 'commented':commented}
     return render(request, 'registration/home.html', {} )
 
 def login_user(request):
