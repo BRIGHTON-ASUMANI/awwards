@@ -66,4 +66,4 @@ class SignUpForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['user','image_name']
+        fields = '__all__'
