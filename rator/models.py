@@ -11,7 +11,7 @@ class Project(models.Model):
     landing_page = ImageField(manual_crop='150x150')
     title = models.CharField(max_length=30)
     description = models.TextField()
-    link = models.UrlField()
+    link = models.URLField(max_length=250)
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Profile(models.Model):
     picture = ImageField(manual_crop='150x150')
     contact = models.CharField(max_length =300)
     bio = models.TextField()
-    link = models.UrlField()
+
 
     @classmethod
     def get_all(cls):

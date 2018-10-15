@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Project, Profile
 
 class EditProfileForm(UserCreationForm):
     password1 = forms.CharField(label='', widget = forms.TextInput(attrs={'type':'hidden'}))
@@ -65,5 +66,5 @@ class SignUpForm(UserCreationForm):
 
 class ProjectForm(forms.ModelForm):
     class Meta:
-        model = Image
+        model = Profile
         fields = '__all__'
