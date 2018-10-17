@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Project, Profile
+from .models import Project, Profile, Review
 
 class EditProfileForm(UserCreationForm):
     password1 = forms.CharField(label='', widget = forms.TextInput(attrs={'type':'hidden'}))
@@ -9,6 +9,7 @@ class EditProfileForm(UserCreationForm):
     email = forms.EmailField(label='',widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'email address'}))
     first_name = forms.CharField(label='',max_length=100, widget = forms.TextInput(attrs={'class':'form-control' , 'placeholder':'first name'}))
     last_name = forms.CharField(label='',max_length=100, widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'last name'}))
+
     # fav_color = forms.CharField(max_length=100)
     class Meta:
         model = User
@@ -67,4 +68,15 @@ class SignUpForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
+        exclude = ['user']
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ( 'review',)
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
         fields = '__all__'

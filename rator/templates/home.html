@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+
+<!--
+					{% if profile %}
+
+							<img src="{{request.user.profile.picture.cdn_url}}" alt="">
+
+
+							<h1 class="profile-user-name">{{ request.user.username }}</h1>
+							<!- <a href="{% url 'edit_profile' %}"><button class="btn profile-edit-btn">Edit Profile</button> -->
+
+						<!-- <div class="profile-bio">
+							<p><span class="profile-real-name"></span>{{request.user.profile.bio}}</p>
+						</div>
+					{% else %}
+						<!- <img src="https://mbtskoudsalg.com/images/user-avatar-png-4.png" alt=""> -->
+					<!-- {% endif %} -->
+
+
+<section id="photos">
+
+ {% for pic in project %}
+
+<!-- <h3>posted by {{pic.user}} on {{pic.post_date}}</h3> -->
+
+         <img src="{{pic.landing_page.cdn_url}}" class='img-responsive ' style="width:100%" class="content" />
+          <a style='font-size:20px;'>{{pic.link}}</a>
+
+
+
+
+ {% endfor %}
+
+</section>
+
+{% endblock %}

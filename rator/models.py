@@ -8,7 +8,7 @@ from django.utils import timezone
 
 class Project(models.Model):
     user = models.ForeignKey(User, related_name="poster", on_delete=models.CASCADE)
-    landing_page = ImageField(manual_crop='100x100')
+    landing_page = ImageField(manual_crop='')
     title = models.CharField(max_length=30)
     description = models.TextField()
     link = models.URLField(max_length=250)
@@ -52,3 +52,17 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Review(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
+    # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
+    review = models.CharField(max_length =300)
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.review

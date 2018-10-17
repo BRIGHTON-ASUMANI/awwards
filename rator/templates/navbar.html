@@ -3,6 +3,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <img class="navbar-brand" src="https://mbtskoudsalg.com/images/user-avatar-png-4.png" width='60px' alt="">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
@@ -13,6 +14,11 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'edit_profile' %}">Edit_profile</a>
       </li>
+
+      <li>
+           <a href="{%url 'new_project'%}">Create Post</a>
+         </li>
+
     {% else %}
     <li class="nav-item">
       <a class="nav-link" href="{% url 'login' %}">Login</a>

@@ -2,16 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, EditProfileForm, ProjectForm
+from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, CommentForm
 from .models import Project, Profile
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     profile = Profile.get_all()
-    project=Project.all_projects()
+    project=Project.objects.filter(user=request.user)
     current_user= request.user
-    context = {"project":project,"current_user":current_user,"profile":profile}
-    return render(request, 'registration/home.html', context )
+    commented = CommentForm()
+    context = {"project":project,"current_user":current_user,"profile":profile, 'commented':commented}
+    return render(request, 'home.html', context )
 
 
 @login_required(login_url='/login')
@@ -27,7 +28,78 @@ def new_project(request):
 
     else:
         form = ProjectForm()
-    return render(request, 'registration/image.html', {"form": form})
+    return render(request, 'image.html', {"form": form})
+
+
+@login_required(login_url='/login')
+def comment(request,id):
+    upload = Image.objects.get(id=id)
+    if request.method == 'POST':
+        comm=CommentForm(request.POST)
+        if comm.is_valid():
+            comment=comm.save(commit=False)
+            comment.user = request.user
+            comment.post=upload
+            comment.save()
+            return redirect('home')
+    return redirect('home')
+
+
+
+@login_required(login_url='/login')
+def profile(request):
+    current_user = request.user
+    project=Project.objects.filter(user=request.user)
+    if request.method == 'POST':
+        form_data = ProfileForm(request.POST, request.FILES, instance=request.user)
+        if form_data.is_valid():
+            profile = form_data.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return redirect('home')
+
+    else:
+        form_data = ProfileForm()
+    return render(request, 'profile.html', {"form_data": form_data})
+
+
+
+def edit_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = EditProfileForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, ('You have editted your profile' ))
+            return redirect('home')
+
+    else:
+        form = EditProfileForm(instance=request.user)
+    context = {'form': form }
+    return render(request, 'edit_profile.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,7 +116,7 @@ def login_user(request):
             messages.success(request, ('error logging in - please try again' ))
             return redirect('login')
     else:
-        return render(request, 'registration/login.html', {} )
+        return render(request, 'login.html', {} )
 
 def logout_user(request):
     logout(request)
@@ -66,20 +138,8 @@ def register_user(request):
     else:
         form = SignUpForm()
     context = {'form': form }
-    return render(request, 'registration/register.html',context)
+    return render(request, 'register.html',context)
 
-def edit_profile(request):
-    if request.method == 'POST':
-        form = EditProfileForm(data=request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, ('You have editted your profile' ))
-            return redirect('home')
-
-    else:
-        form = EditProfileForm(instance=request.user)
-    context = {'form': form }
-    return render(request, 'registration/edit_profile.html',context)
 
 def change_password(request):
     if request.method == 'POST':
@@ -93,4 +153,4 @@ def change_password(request):
     else:
         form = PasswordChangeForm(user=request.user)
     context = {'form': form }
-    return render(request, 'registration/change_password.html',context)
+    return render(request, 'change_password.html',context)
