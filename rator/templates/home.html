@@ -11,39 +11,39 @@
  {% if project %}
  {% for pic in project %}
 
- <div>
- <h3>posted by {{pic.user}} on {{pic.post_date}}</h3>
+<div>
+<h3>posted by {{pic.user}} on {{pic.post_date}}</h3>
 
-          <img src="{{pic.image.url}}" class='img-responsive ' style="width:100%" class="content" />
-           <p style='font-size:20px;'>"{{pic.image_caption}}"</p>
- </div>
-     <div style="margin:5px;">
- <h3 class='center'>comments</h3>
-              {% for comment in pic.comments.all %}
-              <a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>{{comment.text}}
-              </br>
-              {% endfor %}
+         <img src="{{pic.landing_page.cdn_url}}" class='img-responsive ' style="width:100%" class="content" />
+          <p style='font-size:20px;'>"{{pic.description}}"</p>
+</div>
+    <div style="margin:5px;">
+<h3 class='center'>comments</h3>
+             {% for comment in pic.comments.all %}
+             <a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>{{comment.review}}</a>
+             </br>
+             {% endfor %}
 
- </div>
- <div>
-              <form id='comment' action="/comments/{{pic.id}}" method="post" enctype="multipart/form-data">
-                  {%csrf_token%}
+</div>
+<div>
+             <form id='comment' action="/comments/{{pic.id}}" method="post" enctype="multipart/form-data">
+                 {%csrf_token%}
 
-                  {% bootstrap_form commented %}
-                  <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
-              </form>
-
-
- </div>
-  </br>
-  </br>
-  {% endfor %}
-  {% else %}
-  <p>Nothing has been posted for now</p>
-  {% endif %}
-
-    </div>
+                 {% bootstrap_form commented %}
+                 <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
+             </form>
 
 
+</div>
+ </br>
+ </br>
+ {% endfor %}
+ {% else %}
+ <p>Nothing has been posted for now</p>
+ {% endif %}
 
- {% endblock %}
+   </div>
+
+
+
+{% endblock %}

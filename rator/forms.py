@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Project, Profile, Comment
+from .models import Project, Profile, Review
 
 class EditProfileForm(UserCreationForm):
     password1 = forms.CharField(label='', widget = forms.TextInput(attrs={'type':'hidden'}))
@@ -68,13 +68,13 @@ class SignUpForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['user']
+        exclude = ['user', 'likes', 'post_date','profile']
 
 class CommentForm(forms.ModelForm):
 
     class Meta:
-        model = Comment
-        fields = ( 'text',)
+        model = Review
+        fields = ( 'review',)
 
 class ProfileForm(forms.ModelForm):
     class Meta:

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, CommentForm
-from .models import Project, Profile, Comment
+from .models import Project, Profile, Review
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
@@ -30,9 +30,10 @@ def new_project(request):
         form = ProjectForm()
     return render(request, 'image.html', {"form": form})
 
+
 @login_required(login_url='/login')
 def comment(request,id):
-    upload = Image.objects.get(id=id)
+    upload = Project.objects.get(id=id)
     if request.method == 'POST':
         comm=CommentForm(request.POST)
         if comm.is_valid():
@@ -42,6 +43,7 @@ def comment(request,id):
             comment.save()
             return redirect('home')
     return redirect('home')
+
 
 
 @login_required(login_url='/login')
