@@ -1,38 +1,49 @@
 {% extends 'base.html'%}
-{% block content %}
+{% load bootstrap4 %}
 {% load static %}
+{% block content %}
 
+ <div class="col-md-6 offset-md-3">
+<div>
+     <a href="{%url 'new_project'%}">Create Post</a>
+   </div>
 
-<!--
-					{% if profile %}
-
-							<img src="{{request.user.profile.picture.cdn_url}}" alt="">
-
-
-							<h1 class="profile-user-name">{{ request.user.username }}</h1>
-							<!- <a href="{% url 'edit_profile' %}"><button class="btn profile-edit-btn">Edit Profile</button> -->
-
-						<!-- <div class="profile-bio">
-							<p><span class="profile-real-name"></span>{{request.user.profile.bio}}</p>
-						</div>
-					{% else %}
-						<!- <img src="https://mbtskoudsalg.com/images/user-avatar-png-4.png" alt=""> -->
-					<!-- {% endif %} -->
-
-
-<section id="photos">
+ {% if project %}
  {% for pic in project %}
 
-<!-- <h3>posted by {{pic.user}} on {{pic.post_date}}</h3> -->
+ <div>
+ <h3>posted by {{pic.user}} on {{pic.post_date}}</h3>
 
-         <img src="{{pic.landing_page.cdn_url}}" class='img-responsive ' style="width:100%" class="content" />
-          <a style='font-size:20px;'>{{pic.link}}</a>
+          <img src="{{pic.image.url}}" class='img-responsive ' style="width:100%" class="content" />
+           <p style='font-size:20px;'>"{{pic.image_caption}}"</p>
+ </div>
+     <div style="margin:5px;">
+ <h3 class='center'>comments</h3>
+              {% for comment in pic.comments.all %}
+              <a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>{{comment.text}}
+              </br>
+              {% endfor %}
+
+ </div>
+ <div>
+              <form id='comment' action="/comments/{{pic.id}}" method="post" enctype="multipart/form-data">
+                  {%csrf_token%}
+
+                  {% bootstrap_form commented %}
+                  <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
+              </form>
+
+
+ </div>
+  </br>
+  </br>
+  {% endfor %}
+  {% else %}
+  <p>Nothing has been posted for now</p>
+  {% endif %}
+
+    </div>
 
 
 
-
- {% endfor %}
-
-</section>
-
-{% endblock %}
+ {% endblock %}

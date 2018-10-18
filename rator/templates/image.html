@@ -1,3 +1,4 @@
+
 {% load bootstrap4 %}
 {% load staticfiles %}
 <!DOCTYPE html>
@@ -10,13 +11,17 @@
   <title>New Project</title>
   {{form.media}}
 
-{% block styles %} {% bootstrap_css %}
+{% block styles %}
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+ {% bootstrap_css %}
  {% endblock %}
 
 </head>
 
  <div class="col-md-6 offset-md-3">
-
+   <div class="card-header">
+<marquee direction='left' behavior="alternate" scrollamount="3"><h2><i class="em em-european_post_office"></i>!!Post something!!<i class="em em-european_post_office"></i></h2></marquee>
+<div class="card-body">
   <form  action="{%url 'new_project'%}" method="POST" enctype="multipart/form-data">
     {%csrf_token%}
 
@@ -28,4 +33,5 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
 
+</div>
 </div>

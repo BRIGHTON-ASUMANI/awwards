@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
+<div class="col-md-6 offset-md-3">
 <h3 class="text-center">Edit Profile</h3>
 <div class="col-md-6 offset-md-3">
 <form method='POST'>
@@ -23,9 +24,11 @@
 {{ form.as_p }}
 
   <p><small><a href="{% url 'change_password' %}">click here</a> To change your Password</small></p>
+<p><small><a href="{% url 'edit' %}">click here</a> for more settings</small></p>
 <input type="submit" value='Edit' class="btn btn-secondary">
 </form>
 
+</div>
 </div>
 
 

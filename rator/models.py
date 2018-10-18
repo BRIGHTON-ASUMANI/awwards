@@ -53,10 +53,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-class Review(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
+class Comment(models.Model):
+    projo = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
     # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
-    review = models.CharField(max_length =300)
+    text = models.CharField(max_length =300)
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
 
@@ -65,4 +65,9 @@ class Review(models.Model):
         self.save()
 
     def __str__(self):
-        return self.review
+        return self.text
+
+    @classmethod
+    def all_comments(cls):
+        comments = cls.objects.all()
+        return comments

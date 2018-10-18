@@ -3,12 +3,12 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, CommentForm
-from .models import Project, Profile
+from .models import Project, Profile, Comment
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     profile = Profile.get_all()
-    project=Project.objects.filter(user=request.user)
+    project=Project.objects.filter()
     current_user= request.user
     commented = CommentForm()
     context = {"project":project,"current_user":current_user,"profile":profile, 'commented':commented}
@@ -30,7 +30,6 @@ def new_project(request):
         form = ProjectForm()
     return render(request, 'image.html', {"form": form})
 
-
 @login_required(login_url='/login')
 def comment(request,id):
     upload = Image.objects.get(id=id)
@@ -43,7 +42,6 @@ def comment(request,id):
             comment.save()
             return redirect('home')
     return redirect('home')
-
 
 
 @login_required(login_url='/login')
@@ -129,3 +127,18 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
     context = {'form': form }
     return render(request, 'change_password.html',context)
+
+
+@login_required( login_url='/login' )
+def edit(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form=ProfileForm( request.POST , request.FILES )
+        if form.is_valid( ):
+            update=form.save( commit=False )
+            update.user=current_user
+            update.save( )
+            return redirect( 'edit_profile' )
+    else:
+        form=ProfileForm( )
+    return render( request , 'edit.html' , {"form": form} )

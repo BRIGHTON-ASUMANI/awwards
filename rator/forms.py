@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Project, Profile, Review
+from .models import Project, Profile, Comment
 
 class EditProfileForm(UserCreationForm):
     password1 = forms.CharField(label='', widget = forms.TextInput(attrs={'type':'hidden'}))
@@ -73,10 +73,10 @@ class ProjectForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
 
     class Meta:
-        model = Review
-        fields = ( 'review',)
+        model = Comment
+        fields = ( 'text',)
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
+        exclude = ['user']
