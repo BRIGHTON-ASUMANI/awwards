@@ -48,8 +48,8 @@ For the application to work you need some basic installations.
 
 
 ### __Authors__
-***BRIGHTON ASUMANI***
-* For anyproblem please contact at asumanibrighton@gmail.com
+***fh5co ASUMANI***
+* For anyproblem please contact at asumanifh5co@gmail.com
 
 ### __Licence__
 This project is licensed under the MIT License

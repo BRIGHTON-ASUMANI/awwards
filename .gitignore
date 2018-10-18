@@ -7,12 +7,12 @@ __pycache__/
 *.so
 
 
-pictures/static/css/animate.css*
-pictures/static/css/bootstrap.css*
-pictures/static/css/icomoon.css*
-pictures/static/css/flexslider.css*
+rator/static/css/animate.css*
+rator/static/css/bootstrap.css*
+rator/static/css/icomoon.css*
+rator/static/css/flexslider.css*
 
-pictures/static/js/jquery.easing.1.3.js*
+rator/static/js/jquery.easing.1.3.js*
 
 
 virtual/

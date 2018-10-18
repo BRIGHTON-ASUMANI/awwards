@@ -78,31 +78,6 @@ def edit_profile(request):
     context = {'form': form }
     return render(request, 'edit_profile.html',context)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']

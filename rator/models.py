@@ -32,7 +32,7 @@ class Project(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, related_name="profiler", on_delete=models.CASCADE)
-    picture = ImageField(manual_crop='150x150')
+    picture = models.ImageField(upload_to='profile')
     contact = models.CharField(max_length =300)
     bio = models.TextField()
 
