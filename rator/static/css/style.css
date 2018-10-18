@@ -1,45 +1,3 @@
-/*
-   
-    Template Name : WebRes - Personal Resume Template
-    Author : UiPasta Team
-    Website : http://www.uipasta.com/
-    Support : http://www.uipasta.com/support/
-	
-	
-*/
-
-
-
-/*
-   
-   Table Of Content
-   
-   1. Global Style
-   2. Preloader
-   3. Home Section and Navigation Menu
-   4. Qualification and Experience
-   5. About
-      5.1 Skills
-      5.2 Subscribe
-   6. Portfolio
-   7. Testimonial
-   8. Statistics
-   9. Services
-  10. Call to Action
-  11. Contact Us
-  12. Social Icons
-  13. Footer
-  14. Scroll To Top
-  15. Responsive
-  16. Useful Classes ( Such as : Margin, Padding, colors  "This classes will be helpful for you during designing/development time.")
-  17. UiPasta Credit
- 
-
-*/
-
-
-
-/* Global Style */
 
 body {
     font-size: 12px;
@@ -503,7 +461,7 @@ tr > td:nth-child(2) {
 	line-height: 30px;
 }
 
-.experience-content:after, 
+.experience-content:after,
 .experience-content:before {
 	right: 100%;
 	top: 35%;
@@ -1228,12 +1186,12 @@ ul.portfolio li.active {
 	.experience-circle i {
 		font-size: 30px;
 	}
-	
+
 	.experience-content{
 		margin-left: 75px;
 	}
-	
-	.experience-content:after, 
+
+	.experience-content:after,
 	.experience-content:before {
 		top: 30%;
 	}
@@ -1245,16 +1203,16 @@ ul.portfolio li.active {
         padding: 30px 11px;
         font-size: 12px;
     }
-    
+
 	.navigation-background .navigation-menu .navbar-nav li a {
         padding: 30px 11px;
         font-size: 12px;
     }
-	
+
 	.navigation-background .logo {
 		padding-top: 28px;
 	}
-	
+
 	.margin-left-setting {
 		margin-left: 0px !important;
 	}
@@ -1272,83 +1230,83 @@ ul.portfolio li.active {
     .navbar-toggle .icon-bar {
         background: #f7639a;
     }
-    
+
 	.navigation-background .navbar-toggle .icon-bar {
         background: #ffffff;
     }
-    
+
 	.navbar-toggle {
         margin-right: 0px;
         margin-top: -30px;
     }
-    
+
 	.navbar {
         min-height: 0px;
     }
-    
+
 	.navigation-menu .navbar-nav li a {
         padding: 11px 15px;
 		color: #ffffff;
     }
-    
+
 	.navigation-menu .navbar-nav li a:hover {
         color: #ffffff;
     }
-    
+
 	.navigation-background .navigation-menu .navbar-nav li a:hover {
         color: #ffffff;
     }
-    
+
 	.navigation-background .navigation-menu .navbar-nav li a {
         padding: 11px 15px;
     }
-    
+
 	.navbar-fixed-bottom .navbar-collapse,
     .navbar-fixed-top .navbar-collapse {
         max-height: 420px;
     }
-    
+
 	.navbar-toggle {
         margin-top: -30px;
     }
-    
+
 	.navbar-collapse {
         background: #4c9cef;
     }
-    
+
 	.navigation-background .navbar-collapse {
         background: #4c9cef;
     }
-    
+
 	.section-title h2 {
         font-size: 22px;
     }
-    
+
 	.testimonial-word {
         padding: 0;
     }
-    
+
 	.testimonial-carousel-list {
         margin-top: 0px;
     }
-    
+
 	.call-to-action h2 {
         font-size: 18px;
         line-height: 35px;
 	}
-    
+
 	.contact-us-detail {
         left: 39%;
     }
-    
+
 	.owl-prev {
         left: 5px;
     }
-    
+
 	.owl-next {
         right: 5px;
     }
-    
+
 	.scroll-to-top {
         width: 45px !important;
         height: 45px !important;
@@ -1367,33 +1325,33 @@ ul.portfolio li.active {
          line-height: 44px;
          font-size: 16px;
       }
-	  
+
      .section-title h2 {
          font-size: 16px;
 		 font-weight: 500;
        }
-	 
+
       .section-title p {
          font-weight: 300;
          font-size: 12px;
       }
-	  
+
 	  .statistics-content > h5 {
         font-size: 20px;
       }
-	  
+
       .statistics-content > span {
         font-size: 10px;
       }
-	  
+
       .statistics-icon {
         font-size: 30px;
       }
-	  
+
       .services-section hr {
           width: 35px;
       }
-	  
+
 	  .services-section h3 {
           font-size: 12px;
       }
@@ -1407,7 +1365,7 @@ ul.portfolio li.active {
           font-size: 30px;
           margin-top: 45px;
       }
-	  
+
       .owl-theme .owl-controls .owl-buttons div {
           padding: 6px 10px;
           width: 40px;
@@ -1415,7 +1373,7 @@ ul.portfolio li.active {
           line-height: 36px;
 		  font-size: 8px;
        }
-	   
+
       .contact-us-detail {
           left: 30%;
        }
@@ -1427,20 +1385,20 @@ ul.portfolio li.active {
 		margin-left: 0px;
 		border: 0px;
 	}
-	
+
 	.experience-circle {
 		margin: 0 auto;
 		position: static;
 		margin-bottom: 20px;
 	}
-	
+
 	.experience-content {
 		padding: 10px 15px;
 		margin-left: 0px;
 		text-align: center;
 	}
-	
-	.experience-content:after, 
+
+	.experience-content:after,
 	.experience-content:before {
 		display: none;
 	}
@@ -1453,7 +1411,7 @@ ul.portfolio li.active {
 		   padding: 14px 28px;
 		   font-weight: 600;
 	   }
-	   
+
 	   .contact-us-detail {
           left: 25%;
        }
