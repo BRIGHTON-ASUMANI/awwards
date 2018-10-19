@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 
-rator/static/*
+rator/st
 
 virtual/
 *pyc
