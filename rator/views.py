@@ -48,19 +48,10 @@ def comment(request,id):
 
 @login_required(login_url='/login')
 def profile(request):
-    current_user = request.user
-    project=Project.objects.filter(user=request.user)
-    if request.method == 'POST':
-        form_data = ProfileForm(request.POST, request.FILES, instance=request.user)
-        if form_data.is_valid():
-            profile = form_data.save(commit=False)
-            profile.user = current_user
-            profile.save()
-        return redirect('home')
-
-    else:
-        form_data = ProfileForm()
-    return render(request, 'profile.html', {"form_data": form_data})
+    profile =Profile.objects.filter(user=request.user.id)
+    project =Project.objects.filter(user=request.user.id)
+    commented = CommentForm()
+    return render(request, 'profile.html', {"profile": profile, "project": project})
 
 
 

@@ -26,7 +26,8 @@
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right" >
                                         {% if user.is_authenticated %}
-                                        <li class="active"><a class="smoth-scroll" href="#home">Home <div class="ripple-wrapper"></div></a>
+                                        <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
+                                        </li>
                                         <li><a class="smoth-scroll" href="{% url 'edit_profile' %}">Edit_profile</a>
                                         </li>
                                       </li>

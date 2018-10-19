@@ -32,9 +32,10 @@ class Project(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, related_name="profiler", on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to='profile')
+    picture = ImageField()
     contact = models.CharField(max_length =300)
     bio = models.TextField()
+    
 
 
     @classmethod
@@ -58,6 +59,7 @@ class Review(models.Model):
     # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     review = models.CharField(max_length =300)
     created_date = models.DateTimeField(default=timezone.now)
+
 
 
     def __str__(self):
