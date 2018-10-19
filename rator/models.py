@@ -59,9 +59,6 @@ class Review(models.Model):
     review = models.CharField(max_length =300)
     created_date = models.DateTimeField(default=timezone.now)
 
-    def approve(self):
-        self.approved_comment = True
-        self.save()
 
     def __str__(self):
         return self.review

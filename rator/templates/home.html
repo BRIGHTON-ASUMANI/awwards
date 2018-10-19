@@ -6,28 +6,67 @@
 {% if project %}
 
 
-    <!-- Services Start -->
-    <section id="services" class="services-section section-space-padding">
-        <div class="container">
-           <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>Posted projects.</h2>
-                          <div class="divider dark">
-						   <i class="icon-drop"></i>
-						 </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Services Start -->
+  <section id="services" class="services-section section-space-padding">
+      <div class="container">
+         <div class="row">
+              <div class="col-sm-12">
+                  <div class="section-title">
+                      <h2>Posted projects.</h2>
+                        <div class="divider dark">
+					   <i class="icon-drop"></i>
+					 </div>
+                  </div>
+              </div>
+          </div>
 
 
-        <div class="row margin-top-30">
+<div class="row margin-top-30">
 {% for pic in project %}
         <div class="col-md-4 col-sm-6">
 				<div class="services-detail">
 					<i class="fa fa-desktop color-1" aria-hidden="true"></i>
-					<h3>{{pic.title}}</h3>
-					<hr>
+          <h3 data-toggle="modal" data-target="#{{pic.id}}">{{pic.title}}</h3>
+
+  <!-- Modal -->
+  <div class="modal fade" id="{{pic.id}}" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{pic.title}}</h4>
+        </div>
+        <div class="modal-body">
+<div>
+<img src="{{pic.landing_page.cdn_url}}" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}" style="width:50%;height:180px;" >
+</div>
+<div>
+          {% for comment in pic.comments.all %}
+             <a href='{{comment.user.username}}'>{{comment.user.username}}</a></em></b>{{comment.review}}
+             </br>
+             {% endfor %}
+</div>
+</div>
+<div>
+             <form id='comment' action="/comments/{{pic.id}}" method="post" enctype="multipart/form-data" style='width:270px;margin-left:40px;margin-right:40px;'>
+                 {%csrf_token%}
+
+                 {% bootstrap_form commented %}
+                 <input type="submit" class="btn btn-primary btn-lg" value="Add comment">
+             </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 				</div>
 			</div>
       {% endfor %}

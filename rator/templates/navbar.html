@@ -1,6 +1,41 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <img class="navbar-brand" src="https://mbtskoudsalg.com/images/user-avatar-png-4.png" width='60px' alt="">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+    {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'edit_profile' %}">Edit_profile</a>
+      </li>
+
+      <li>
+           <a href="{%url 'new_project'%}">Create Post</a>
+         </li>
+
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'register' %}">Register</a>
+    </li>
+    {% endif %}
+
+    </ul>
+
+  </div>
+</nav> -->
 
     <!-- Menu Section Start -->
-    <header id="home" >
+    <header id="home">
 
         <div class="header-top-area">
             <div class="container">
@@ -28,20 +63,21 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         {% if user.is_authenticated %}
                                         <li class="active"><a class="smoth-scroll" href="#home">Home <div class="ripple-wrapper"></div></a>
-                                        </li>
-                                        <li><a class="smoth-scroll" href="{% url 'logout' %}">Logout</a>
-                                        </li>
                                         <li><a class="smoth-scroll" href="{% url 'edit_profile' %}">Edit_profile</a>
                                         </li>
+                                      </li>
+                                      <li><a class="smoth-scroll" href="{% url 'logout' %}">Logout</a>
+                                      </li>
+                                      <li><a class="smoth-scroll" href="{%url 'new_project'%}">Submit</a></a>
+                                      </li>
                                         {% else %}
                                         <li><a class="smoth-scroll" href="{% url 'login' %}">Login</a>
                                         </li>
                                         <li><a class="smoth-scroll" href="{% url 'register' %}">Register</a>
-
-                                          {% endif %}
                                         </li>
                                         <li><a class="smoth-scroll" href="{%url 'new_project'%}">Submit</a></a>
                                         </li>
+                                          {% endif %}
                                     </ul>
                                 </div>
                             </div>

@@ -1,12 +1,27 @@
 {% extends 'base.html'%}
 {% load bootstrap3 %}
 {% block content %}
- <div class="col-lg-6 col-lg-offset-3 text-center" style='margin-top:60px;'>
+ <div class="col-lg-6 col-lg-offset-3 text-center" style='margin-top:100px;'>
 <h3 class="text-center">Login</h3>
 
 <form method='POST'>
   <div class="form-group">
      {% csrf_token %}
+
+     {% if form.errors %}
+            <div class='alert alert-warning alert-dismissable' role='alert'>
+            <button class="close" data-dismiss='alert'>
+            <small><sup>x</sup></small>
+            </button>
+
+            {% for field in form %}
+              {% if field.errors %}
+                {{ field.errors }}
+              {% endif %}
+            {% endfor %}
+
+            </div>
+            {% endif %}
     <input type="text" class="form-control"  placeholder="Enter username" name="username">
   </div>
   <div class="form-group">

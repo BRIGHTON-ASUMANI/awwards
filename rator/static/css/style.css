@@ -6,6 +6,7 @@ body {
     letter-spacing: 1px;
     height: 100%;
     font-family: 'Poppins', sans-serif;
+
 }
 
 html,
@@ -14,8 +15,8 @@ body {
 }
 
 ::selection {
-    background-color: black;
-    color: #ffffff;
+    background-color: #000000;
+    color: #000000;
 }
 
 ::-moz-selection {
@@ -322,7 +323,7 @@ tr > td:nth-child(2) {
 }
 
 .header-top-area {
-    position: fixed;
+
     left: 0;
     top: 0;
     width: 100%;
@@ -348,7 +349,7 @@ tr > td:nth-child(2) {
 }
 
 .navigation-menu .navbar-nav li a {
-    color: #333333;
+    color: #000000;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
@@ -380,7 +381,7 @@ tr > td:nth-child(2) {
 .navigation-background {
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-    background: #4c9cef;
+    background: #000000;
 }
 
 .navigation-background .logo {

@@ -39,7 +39,7 @@ def comment(request,id):
         if comm.is_valid():
             comment=comm.save(commit=False)
             comment.user = request.user
-            comment.post=upload
+            comment.project=upload
             comment.save()
             return redirect('home')
     return redirect('home')
