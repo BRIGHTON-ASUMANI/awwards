@@ -7,7 +7,11 @@ __pycache__/
 *.so
 
 
-rator/st
+rator/static/css/plugin.css*
+rator/static/js/plugin.js*
+
+rator/static/js/jquery.min.js*
+
 
 virtual/
 *pyc
