@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm
+from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, RateForm
 from .models import Project, Profile, Review
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -15,6 +15,7 @@ def home(request):
     project=Project.objects.filter()
     current_user= request.user
     # commented = CommentForm()
+    rates = Review.get_all()
     context = {"project":project,"current_user":current_user,"profile":profile}
     return render(request, 'home.html', context )
 
@@ -92,6 +93,22 @@ def logout_user(request):
     logout(request)
     messages.success(request, ('You have been logged out' ))
     return redirect('home')
+
+
+
+def rates(request,review_id):
+    current_user = request.user
+    rates = get_object_or_404(Project,pk=review_id)
+    if request.method == 'POST':
+        form = RateForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_rates= form.save(commit=False)
+            new_rates.project = rates
+            new_rates.user = current_user
+            new_rates.save()
+        return redirect('home')
+    return render(request, 'home.html',{"rates":rates})
+
 
 def register_user(request):
     if request.method == 'POST':

@@ -22,6 +22,7 @@ urlpatterns=[
     url( r'profile/(?P<pk>[0-9]+)/delete/$' , views.ProfileDelete.as_view( ) , name='profile-delete' ) ,
     url( r'^create/$' , views.create , name='create' ),
     url(r'^search$',views.search , name='search'),
+    url(r'^rates/(\d+)$', views.rates, name='rates'),
 
 ]
 if settings.DEBUG:

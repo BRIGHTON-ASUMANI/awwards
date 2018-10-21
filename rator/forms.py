@@ -79,3 +79,11 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        exclude = ['user','project']
+        widgets = {
+            'tags': forms.CheckboxSelectMultiple(),
+        }
