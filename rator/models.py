@@ -16,7 +16,7 @@ class Project(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('profile', kwargs={'pk':self.pk})
+        return reverse('dump', kwargs={'pk':self.pk})
 
 
     def __str__(self):

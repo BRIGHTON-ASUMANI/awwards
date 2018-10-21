@@ -11,8 +11,8 @@
       <div class="container">
          <div class="row">
               <div class="col-sm-12">
-                  <div class="section-title">
-                      <h2 style='color:#00ff41;'>Posted projects.</h2>
+                  <div class="section-title"  style='color:#000000;'>
+                      <h2 style='margin:0;padding:0;'>Posted projects.</h2>
                         <div class="divider dark">
 					   <i class="icon-drop" style='color:#00ff41;' ></i>
 					 </div>
@@ -30,7 +30,7 @@
 
   <!-- Modal -->
   <div class="modal fade " id="{{pic.id}}" role="dialog" style="color:#00ff41; ">
-    <div class="modal-dialog" >
+    <div class="modal-dialog modal-lg" >
 
       <!-- Modal content-->
       <div class="modal-content"  style="background-color: #2c2326">
@@ -40,7 +40,7 @@
         </div>
         <div class="modal-body">
 <div>
-<img src="{{pic.landing_page.cdn_url}}" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}" style="width:80%;height:220px;" >
+<img src="{{pic.landing_page.cdn_url}}" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}">
 </div>
 <div>
           {% for comment in pic.comments.all %}
@@ -48,7 +48,6 @@
 <hr>
             {{comment.review}}
 </hr>
-
              </br>
              {% endfor %}
 </div>
@@ -83,5 +82,31 @@
             </div>
         </div>
     </section>
+
+
+         <footer class="footer-section">
+             <div class="container">
+                 <div class="row">
+
+                 <div class="col-md-12">
+                   <ul class="social-icon margin-bottom-30">
+                      <li><a href="#" target="_blank" class="facebook"><i class="icon-social-facebook"></i></a></li>
+                      <li><a href="#" target="_blank" class="twitter"><i class="icon-social-twitter"></i></a></li>
+                      <li><a href="#" target="_blank" class="instagram"><i class="icon-social-instagram"></i></a></li>
+                      <li><a href="#" target="_blank" class="dribbble"><i class="icon-social-dribbble"></i></a></li>
+                    </ul>
+               </div>
+
+                  <div class="col-md-12 uipasta-credit">
+                     <p style='color: #00ff41;'>Design By brighton </a>
+                     </div>
+
+                  </div>
+             </div>
+         </footer>
+         <!-- Footer End -->
+
+
+
 
 {% endblock %}

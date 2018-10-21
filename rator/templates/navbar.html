@@ -5,9 +5,9 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-3" style='color:#00ff41;'>
+                    <div class="col-sm-3">
                         <div class="logo">
-                            <a class="smoth-scroll" href="/">AWARDS</a>
+                            <a class="smoth-scroll" href="/" style='color: #00ff41;'>AWARDS</a>
                         </div>
                     </div>
 
@@ -26,21 +26,21 @@
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right" >
                                         {% if user.is_authenticated %}
-                                        <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
+                                        <li class="active"><a class="smoth-scroll" href="/" style='color: #00ff41;'>Home <div class="ripple-wrapper"></div></a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="{% url 'edit_profile' %}">Edit_profile</a>
+                                        <li><a class="smoth-scroll" href="{% url 'profile' %}" style='color: #00ff41;'>Profile</a>
                                         </li>
                                       </li>
-                                      <li><a class="smoth-scroll" href="{% url 'logout' %}">Logout</a>
+                                      <li><a class="smoth-scroll" href="{% url 'logout' %}" style='color: #00ff41;'>Logout</a>
                                       </li>
-                                      <li><a class="smoth-scroll" href="{%url 'new_project'%}">Submit</a></a>
+                                      <li><a class="smoth-scroll" href="{%url 'new_project'%}" style='color: #00ff41;'>Submit</a></a>
                                       </li>
                                         {% else %}
-                                        <li><a class="smoth-scroll" href="{% url 'login' %}">Login</a>
+                                        <li><a class="smoth-scroll" href="{% url 'login' %}" style='color: #00ff41;'>Login</a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="{% url 'register' %}">Register</a>
+                                        <li><a class="smoth-scroll" href="{% url 'register' %}" style='color: #00ff41;'>Register</a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="{%url 'new_project'%}">Submit</a></a>
+                                        <li><a class="smoth-scroll" href="{%url 'new_project'%}" style='color: #00ff41;'>Submit</a></a>
                                         </li>
                                           {% endif %}
                                     </ul>

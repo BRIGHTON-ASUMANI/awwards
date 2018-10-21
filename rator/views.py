@@ -66,7 +66,7 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, ('You have editted your profile' ))
-            return redirect('home')
+            return redirect('profile')
 
     else:
         form = EditProfileForm(instance=request.user)
@@ -157,7 +157,7 @@ def edit(request):
             update=form.save( commit=False )
             update.user=current_user
             update.save( )
-            return redirect( 'edit_profile' )
+            return redirect( 'profile' )
     else:
         form=ProfileForm( )
     return render( request , 'edit.html' , {"form": form} )
@@ -177,7 +177,7 @@ class ProfileUpdate(UpdateView):
 
 class AlbumDelete(DeleteView):
    model=Project
-   success_url = reverse_lazy('home')
+   success_url = reverse_lazy('profile')
 
 class ProfileDelete(DeleteView):
    model=Profile
