@@ -40,11 +40,19 @@
         </div>
         <div class="modal-body">
 <div>
-<a href='{{pic.link}}'><img src="{{pic.landing_page.cdn_url}}" class="img-responsive img-rounded" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}"></a>
+<a href='{{pic.link}}'>
+
+    <img src="{{pic.landing_page.cdn_url}}" class="img-responsive img-rounded" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}" class="image" style="width:100%;height:70%;">
+
+    <div class="middle">
+      <div class="text"><a href='{{pic.link}}'>view project</a></div>
+  </div>
+<!-- <img src="{{pic.landing_page.cdn_url}}" class="img-responsive img-rounded" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}" style="width:90%;height:70%;"> -->
+</a>
 </hr>
 </hr>
 <p>{{pi}}</p>
-<a href='{{pic.link}}'>visit project</a>
+<p>{{pic.description}}</p>
 </div>
 <div>
 
