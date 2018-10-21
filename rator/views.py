@@ -167,7 +167,7 @@ def edit(request):
 class AlbumUpdate(UpdateView):
    model=Project
    template_name = 'edit-project.html'
-   fields = ['title','landing_page','description']
+   fields = ['title','landing_page','description', 'link']
 
 class ProfileUpdate(UpdateView):
    model= Profile

@@ -40,29 +40,16 @@
         </div>
         <div class="modal-body">
 <div>
-<img src="{{pic.landing_page.cdn_url}}" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}">
-</div>
-<div>
-          {% for comment in pic.comments.all %}
-             <!-- <a href='{{comment.user.username}}'>{{review.user.username}}</a> -->
-<hr>
-            {{comment.review}}
+<a href='{{pic.link}}'><img src="{{pic.landing_page.cdn_url}}" class="img-responsive img-rounded" data-toggle="modal" data-target="#{{landing_page.id}}" alt="{{pic.title}}"></a>
 </hr>
-             </br>
-             {% endfor %}
-</div>
+</hr>
+<p>{{pi}}</p>
+<a href='{{pic.link}}'>visit project</a>
 </div>
 <div>
-             <form id='comment' action="/comments/{{pic.id}}" method="post" enctype="multipart/form-data" style='width:80%;'>
-                 {%csrf_token%}
 
-                 {% bootstrap_form commented %}
-                 <input type="submit" class="btn btn-primary btn-lg" value="Add comment" style='background-color: #00ff41;' >
-             </form>
-
- <!-- style='background-color: #00ff41; -->
-
-        </div>
+</div>
+</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
