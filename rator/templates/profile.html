@@ -116,10 +116,16 @@
             <form action="{% url 'album-update' pic.id %}" method="post" style="display: inline;">
           {% csrf_token %}
             <input type="hidden" name="project_id" value="{{ pic.id }}" />
+            <div class="tooltip">
             <button type="submit" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-edit"></span>
+                <span class="glyphicon glyphicon-edit tooltiptext">delete post</span>
             </button>
+            </div>
           </form>
+
+          <!-- <div class="tooltip">Hover over me
+            <span class="tooltiptext">Tooltip text</span>
+          </div> -->
 
 
 
