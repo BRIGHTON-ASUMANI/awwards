@@ -78,8 +78,8 @@ class Review(models.Model):
         (5, '5'),
 
     )
-    user = models.ForeignKey(User,null=True)
     project=models.ForeignKey(Project,null=True)
+    user = models.ForeignKey(User,null=True)
     design=models.IntegerField(choices=RATING_CHOICES,null=True)
     usability=models.IntegerField(choices=RATING_CHOICES,null=True)
     content=models.IntegerField(choices=RATING_CHOICES,null=True)

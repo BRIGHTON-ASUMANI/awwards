@@ -1,22 +1,9 @@
+{% extends 'base.html'%}
 {% load bootstrap3 %}
 {% load staticfiles %}
 {% block content %}
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>New Project</title>
   {{form.media}}
-
-{% block styles %}
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
- {% bootstrap_css %}
- {% endblock %}
-
-</head>
 
   <div class="col-lg-6 col-lg-offset-3 text-center" style='margin-top:20px;'>
    <div class="card-header">
@@ -29,9 +16,6 @@
     <input type="submit" class="btn btn-primary btn-lg" value="Post">
   </form>
 
-   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %} {% endblock %}
 
 </div>
 </div>
