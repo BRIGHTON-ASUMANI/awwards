@@ -5,6 +5,10 @@ from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, CommentForm
 from .models import Project, Profile, Review
 from django.contrib.auth.decorators import login_required
+from django.views import generic
+from django.views.generic.edit import UpdateView,DeleteView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import View
 # Create your views here.
 def home(request):
     profile = Profile.get_all()
@@ -121,6 +125,28 @@ def change_password(request):
     context = {'form': form }
     return render(request, 'change_password.html',context)
 
+@login_required(login_url='/login')
+def dump(request,pk):
+    profile =Profile.objects.filter(user=request.user.id)
+    image =Image.objects.filter(user=request.user.id)
+    commented = CommentForm()
+    return render(request,'dump.html',{"profile": profile, "image": image})
+
+@login_required( login_url='/login' )
+def create(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form=ProfileForm( request.POST , request.FILES )
+        if form.is_valid( ):
+            update=form.save( commit=False )
+            update.user=current_user
+            update.save( )
+            return redirect( 'profile' )
+    else:
+        form=ProfileForm( )
+    return render( request , 'create.html' , {"form": form} )
+
+
 
 @login_required( login_url='/login' )
 def edit(request):
@@ -135,3 +161,24 @@ def edit(request):
     else:
         form=ProfileForm( )
     return render( request , 'edit.html' , {"form": form} )
+
+
+
+class AlbumUpdate(UpdateView):
+   model=Project
+   template_name = 'edit-project.html'
+   fields = ['title','landing_page','description']
+
+class ProfileUpdate(UpdateView):
+   model= Profile
+   template_name = 'edit.html'
+   fields = ['contact','bio','picture']
+
+
+class AlbumDelete(DeleteView):
+   model=Project
+   success_url = reverse_lazy('home')
+
+class ProfileDelete(DeleteView):
+   model=Profile
+   success_url = reverse_lazy('profile')

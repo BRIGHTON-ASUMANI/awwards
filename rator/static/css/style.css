@@ -6,7 +6,7 @@ body {
     letter-spacing: 1px;
     height: 100%;
     font-family: 'Poppins', sans-serif;
-    background-image:url('{{ STATIC_URL }}images/plane.png');
+    /* background-image:url('{{ STATIC_URL }}images/plane.png'); */
     background-repeat:no-repeat;
     background-size:100%;
 }

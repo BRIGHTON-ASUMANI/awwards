@@ -5,6 +5,7 @@ import datetime as dt
 from pyuploadcare.dj.models import ImageField
 from django.db.models.signals import post_save
 from django.utils import timezone
+from django.core.urlresolvers import reverse
 
 class Project(models.Model):
     user = models.ForeignKey(User, related_name="poster", on_delete=models.CASCADE)
@@ -13,6 +14,10 @@ class Project(models.Model):
     description = models.TextField()
     link = models.URLField(max_length=250)
     post_date = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('profile', kwargs={'pk':self.pk})
+
 
     def __str__(self):
         return self.title
@@ -35,7 +40,11 @@ class Profile(models.Model):
     picture = ImageField()
     contact = models.CharField(max_length =300)
     bio = models.TextField()
-    
+
+    def get_absolute_url(self):
+        return reverse('dump', kwargs={'pk':self.pk})
+
+
 
 
     @classmethod
