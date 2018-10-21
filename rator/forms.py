@@ -70,10 +70,10 @@ class ProjectForm(forms.ModelForm):
         model = Project
         exclude = ['user', 'likes', 'post_date','profile']
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ( 'review',)
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = Review
+#         fields = ( 'review',)
 
 class ProfileForm(forms.ModelForm):
     class Meta:

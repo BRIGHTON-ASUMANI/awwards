@@ -1,7 +1,10 @@
+{% extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
 
-{% if user %}
 
-
+{% if title %}
   <!-- Services Start -->
   <section id="services" class="services-section section-space-padding" s>
       <div class="container">
@@ -12,17 +15,13 @@
                         <div class="divider dark">
 					   <i class="icon-drop" style='color:#00ff41;' ></i>
 					 </div>
-           <form action="/action_page.php">
-     <input type="text" placeholder="Search.." name="search">
-     <button type="submit"><i class="fa fa-search"></i></button>
-   </form>
                   </div>
               </div>
           </div>
 
 
 <div class="row margin-top-30"  data-toggle="modal" data-target="#{{pic.id}}">
-{% for pic in user %}
+{% for pic in title %}
         <div class="col-md-4 col-sm-6">
 				<div class="services-detail">
 					<i class="fa fa-desktop color-1" aria-hidden="true"></i>
@@ -71,7 +70,7 @@
 			</div>
       {% endfor %}
       {% else %}
-      <p>Nothing has been posted for now</p>
+      <p>No search results</p>
       {% endif %}
 
             </div>

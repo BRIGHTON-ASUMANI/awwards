@@ -21,7 +21,7 @@ urlpatterns=[
     url( r'project/(?P<pk>[0-9]+)/delete/$' , views.AlbumDelete.as_view( ) , name='album-delete' ) ,
     url( r'profile/(?P<pk>[0-9]+)/delete/$' , views.ProfileDelete.as_view( ) , name='profile-delete' ) ,
     url( r'^create/$' , views.create , name='create' ),
-    url(r'^search',views.search,name='search'),
+    url(r'^search$',views.search , name='search'),
 
 ]
 if settings.DEBUG:

@@ -34,6 +34,12 @@ class Project(models.Model):
         return project
 
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        project = cls.objects.filter(title__title__icontains=search_term)
+        return project
+
+
 
 class Profile(models.Model):
     user = models.ForeignKey(User, related_name="profiler", on_delete=models.CASCADE)
@@ -64,12 +70,22 @@ class Profile(models.Model):
         return self.user.username
 
 class Review(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
-    # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
-    review = models.CharField(max_length =300)
-    created_date = models.DateTimeField(default=timezone.now)
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+
+    )
+    user = models.ForeignKey(User,null=True)
+    project=models.ForeignKey(Project,null=True)
+    design=models.IntegerField(choices=RATING_CHOICES,null=True)
+    usability=models.IntegerField(choices=RATING_CHOICES,null=True)
+    content=models.IntegerField(choices=RATING_CHOICES,null=True)
 
 
-
-    def __str__(self):
-        return self.review
+    @classmethod
+    def get_all(cls):
+        all_objects = Review.objects.all()
+        return all_objects

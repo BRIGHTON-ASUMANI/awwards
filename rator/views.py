@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, CommentForm
+from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm
 from .models import Project, Profile, Review
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -14,8 +14,8 @@ def home(request):
     profile = Profile.get_all()
     project=Project.objects.filter()
     current_user= request.user
-    commented = CommentForm()
-    context = {"project":project,"current_user":current_user,"profile":profile, 'commented':commented}
+    # commented = CommentForm()
+    context = {"project":project,"current_user":current_user,"profile":profile}
     return render(request, 'home.html', context )
 
 
@@ -54,7 +54,7 @@ def comment(request,id):
 def profile(request):
     profile =Profile.objects.filter(user=request.user.id)
     project =Project.objects.filter(user=request.user.id)
-    commented = CommentForm()
+    # commented = CommentForm()
     return render(request, 'profile.html', {"profile": profile, "project": project})
 
 
@@ -128,9 +128,9 @@ def change_password(request):
 @login_required(login_url='/login')
 def dump(request,pk):
     profile =Profile.objects.filter(user=request.user.id)
-    image =Image.objects.filter(user=request.user.id)
-    commented = CommentForm()
-    return render(request,'dump.html',{"profile": profile, "image": image})
+    project =Project.objects.filter(user=request.user.id)
+    # commented = CommentForm()
+    return render(request,'dump.html',{"profile": profile, "project": project})
 
 @login_required( login_url='/login' )
 def create(request):
@@ -183,13 +183,16 @@ class ProfileDelete(DeleteView):
    model=Profile
    success_url = reverse_lazy('profile')
 
+
+
 def search(request):
 
-    if 'project' in request.GET or request.GET['project']:
-        search_item = request.GET.get('project')
-        searched_project = Project.objects.filter(name=search_item)
-        message = "{}".format(search_item)
-        return render(request, 'search.html',{"message":message,"user": user})
+    if 'title' in request.GET and request.GET["title"]:
+        search_term = request.GET.get("title")
+        searched_title = Project.search_by_title(search_term)
+        message = f"{search_term}"
+        return render(request, 'search.html',{"message":message,"title": searched_title})
+
     else:
-        message = "You haven't searched for any user"
+        message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
