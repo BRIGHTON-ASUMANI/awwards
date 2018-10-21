@@ -38,7 +38,7 @@ class Project(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User, related_name="profiler", on_delete=models.CASCADE)
     picture = ImageField()
-    contact = models.CharField(max_length =300)
+    contact = models.BigIntegerField()
     bio = models.TextField()
 
     def get_absolute_url(self):

@@ -182,3 +182,15 @@ class AlbumDelete(DeleteView):
 class ProfileDelete(DeleteView):
    model=Profile
    success_url = reverse_lazy('profile')
+
+def search(request):
+
+    if 'project' in request.GET or request.GET['project']:
+        search_item = request.GET.get('project')
+        searched_project = Project.objects.filter(name=search_item)
+        print(searched_project)
+        message = "{}".format(search_item)
+        return render(request, 'search.html',{"message":message,"user": user})
+    else:
+        message = "You haven't searched for any user"
+        return render(request, 'search.html',{"message":message})
