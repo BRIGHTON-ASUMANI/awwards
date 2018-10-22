@@ -91,10 +91,10 @@ if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('awwwards'),
-           'USER': config('user'),
-           'PASSWORD': config('newa$um0ney'),
-           'HOST': config('127.0.0.1'),
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
            'PORT': '',
        }
 
@@ -194,13 +194,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awwwards',
-        'USER': 'user',
-        'PASSWORD':'newa$um0ney',
-
-    }
-}
