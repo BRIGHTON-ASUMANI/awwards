@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Project, Profile, Review
+from .models import Project, Profile
 
 class EditProfileForm(UserCreationForm):
     password1 = forms.CharField(label='', widget = forms.TextInput(attrs={'type':'hidden'}))
@@ -80,10 +80,10 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         exclude = ['user']
 
-class RateForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        exclude = ['user','project']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
+# class RateForm(forms.ModelForm):
+#     class Meta:
+#         model = Review
+#         exclude = ['user','project']
+#         widgets = {
+#             'tags': forms.CheckboxSelectMultiple(),
+#         }

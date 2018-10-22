@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm, RateForm
-from .models import Project, Profile, Review
+from .forms import SignUpForm, EditProfileForm, ProjectForm, ProfileForm
+from .models import Project, Profile
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.views.generic.edit import UpdateView,DeleteView
@@ -15,7 +15,7 @@ def home(request):
     project=Project.objects.filter()
     current_user= request.user
     # commented = CommentForm()
-    rates = Review.get_all()
+    # rates = Review.get_all()
     context = {"project":project,"current_user":current_user,"profile":profile}
     return render(request, 'home.html', context )
 
@@ -96,18 +96,18 @@ def logout_user(request):
 
 
 
-def rates(request,review_id):
-    current_user = request.user
-    rates = get_object_or_404(Project,pk=review_id)
-    if request.method == 'POST':
-        form = RateForm(request.POST, request.FILES)
-        if form.is_valid():
-            new_rates= form.save(commit=False)
-            new_rates.project = rates
-            new_rates.user = current_user
-            new_rates.save()
-        return redirect('home')
-    return render(request, 'home.html',{"rates":rates})
+# def rates(request,review_id):
+#     current_user = request.user
+#     rates = get_object_or_404(Project,pk=review_id)
+#     if request.method == 'POST':
+#         form = RateForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             new_rates= form.save(commit=False)
+#             new_rates.project = rates
+#             new_rates.user = current_user
+#             new_rates.save()
+#         return redirect('home')
+#     return render(request, 'home.html',{"rates":rates})
 
 
 def register_user(request):
@@ -206,9 +206,9 @@ def search(request):
 
     if 'title' in request.GET and request.GET["title"]:
         search_term = request.GET.get("title")
-        searched_title = Project.search_by_title(search_term)
-        message = f"{search_term}"
-        return render(request, 'search.html',{"message":message,"title": searched_title})
+        searched_title = Project.objects.filter(title=search_term)
+        # message = f"{search_title}"
+        return render(request, 'search.html',{"title": searched_title})
 
     else:
         message = "You haven't searched for any term"

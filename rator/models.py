@@ -69,23 +69,23 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-class Review(models.Model):
-    RATING_CHOICES = (
-        (1, '1'),
-        (2, '2'),
-        (3, '3'),
-        (4, '4'),
-        (5, '5'),
-
-    )
-    project=models.ForeignKey(Project,null=True)
-    user = models.ForeignKey(User,null=True)
-    design=models.IntegerField(choices=RATING_CHOICES,null=True)
-    usability=models.IntegerField(choices=RATING_CHOICES,null=True)
-    content=models.IntegerField(choices=RATING_CHOICES,null=True)
-
-
-    @classmethod
-    def get_all(cls):
-        all_objects = Review.objects.all()
-        return all_objects
+# class Review(models.Model):
+#     RATING_CHOICES = (
+#         (1, '1'),
+#         (2, '2'),
+#         (3, '3'),
+#         (4, '4'),
+#         (5, '5'),
+#
+#     )
+#     project=models.ForeignKey(Project,null=True)
+#     user = models.ForeignKey(User,null=True)
+#     design=models.IntegerField(choices=RATING_CHOICES,null=True)
+#     usability=models.IntegerField(choices=RATING_CHOICES,null=True)
+#     content=models.IntegerField(choices=RATING_CHOICES,null=True)
+#
+#
+#     @classmethod
+#     def get_all(cls):
+#         all_objects = Review.objects.all()
+#         return all_objects
