@@ -159,8 +159,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 UPLOADCARE = {
-    'PUB_KEY': config('PUB_KEY'),
-    'SECRET':  config('SECRET'),
+    'pub_key': config('PUB_KEY'),
+    'secret':  config('SECRET'),
 }
 
 
@@ -187,3 +187,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'awwwards',
+        'USER': 'user',
+        'PASSWORD':'newa$um0ney',
+
+    }
+}
