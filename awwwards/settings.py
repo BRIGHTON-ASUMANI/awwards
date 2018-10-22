@@ -159,8 +159,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 UPLOADCARE = {
-    'pub_key': config('PUB_KEY'),
-    'secret':  config('SECRET'),
+    'PUB_KEY': config('PUB_KEY'),
+    'SECRET':  config('SECRET'),
+}
+
+
+
+UPLOADCARE = {
+    'pub_key': 'd8fa4fb3c9f849277d8d',
+    'secret': '05042802f54b4c616599',
 }
 
 
