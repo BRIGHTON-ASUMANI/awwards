@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+.gitignore
 
 rator/static/css/plugin.css*
 rator/static/js/plugin.js*
